@@ -9,12 +9,12 @@ function gridCreation() {
     for (let i = 0; i < 16; i++) {
         rowFragment.appendChild(div.cloneNode(true))
     }
-    /* for (let i = 0; i < 16; i++) {
-        columnFragment.appendChild(rowFragment.cloneNode(true))
-    } */
     rowDiv.appendChild(rowFragment)
+    for (let i = 0; i < 16; i++) {
+        columnFragment.appendChild(rowDiv.cloneNode(true))
+    }
 
-    container.appendChild(rowDiv)
+    container.appendChild(columnFragment)
 }
 
 gridCreation()
