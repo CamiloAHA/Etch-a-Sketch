@@ -11,27 +11,21 @@ button {
 }
 
 .box {
-    width: 32px;
-    height: 32px;
     background-color: orange;
-    border: 1px rgba(0, 0, 0, 0.1) solid; /*toggle to deactivate border*/
     box-sizing: border-box;
 }
 
 .container {
     padding: 0px;
-    background-color: pink;
     width: 800px;
     height: 800px;
     display: flex;
     flex-direction: column;
     box-sizing: content-box;
-    border: 1px rgba(0, 0, 0, 1) solid;
 }
 
 .rowContainer {
     margin: 0px;
-    background-color: pink;
     display: flex;
     flex-direction: row;
     width: 800px;

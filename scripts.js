@@ -16,9 +16,12 @@ function gridCreation(size) {
     }
 
     container.appendChild(columnFragment)
+    hoverEffect(size)
+    gridMargins()
+}
 
+function hoverEffect(size) {
     let boxSize = 800 / size
-
     const boxes = document.querySelectorAll('.box')
 
     boxes.forEach(box => box.style.cssText = `width:${boxSize}px; height:${boxSize}px;`)
@@ -42,6 +45,21 @@ function gridSizeChange() {
         } else {
             alert("You have entered an invalid value")
         }
+    })
+}
+
+function gridMargins() {
+    const button = document.querySelector('#gridMargins')
+    const boxes = document.querySelectorAll('.box')
+
+    button.addEventListener('click', () => {
+        boxes.forEach(box => {
+            if (box.style.border === '') {
+                box.style.border = '1px solid rgba(0, 0, 0, 0.1)'
+            } else {
+                box.style.border = ''
+            }
+        })
     })
 }
 
