@@ -32,13 +32,15 @@ function gridCreation(size) {
         if (rainbow) e.target.style.backgroundColor = randomRGBA()
         else e.target.style.backgroundColor = 'purple'
     }))
-
-    gridMargins()
 }
 
 function randomRGBA() {
-    let o = Math.round, r = Math.random, s = 255;
-    return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
+    let letters = '0123456789ABCDEF'
+    let color = '#'
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color
 }
 
 function gridDelete() {
@@ -77,4 +79,5 @@ function gridMargins() {
 }
 
 gridCreation(16)
+gridMargins()
 gridSizeChange()
