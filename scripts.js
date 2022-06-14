@@ -30,8 +30,18 @@ function gridCreation(size) {
     boxes.forEach(box => box.style.cssText = `width:${boxSize}px; height:${boxSize}px;`)
     boxes.forEach(box => box.addEventListener('mouseover', e => {
         if (rainbow) e.target.style.backgroundColor = randomColor()
-        else e.target.style.backgroundColor = 'purple'
+        else {
+            e.target.style.backgroundColor = 'rgb(128, 0, 128)'
+            if (e.target.style.opacity === '') e.target.style.opacity = 0.1
+            else {
+                opacity = +e.target.style.opacity //Get actual opacity and converts to number
+                e.target.style.opacity = opacity + 0.1
+            }
+        }
     }))
+
+    gridMargins() //This needs to go here for margins to work after grid size change
+    clearGrid() //Same as above
 }
 
 function randomColor() {
@@ -68,7 +78,10 @@ function clearGrid() {
     const boxes = document.querySelectorAll('.box')
 
     button.addEventListener('click', () => {
-        boxes.forEach(box => box.style.backgroundColor = 'orange')
+        boxes.forEach(box => {
+            box.style.backgroundColor = 'orange'
+            box.style.opacity = ''
+        })
     })
 }
 
@@ -88,6 +101,4 @@ function gridMargins() {
 }
 
 gridCreation(16)
-gridMargins()
 gridSizeChange()
-clearGrid()
