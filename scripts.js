@@ -1,4 +1,5 @@
 function gridCreation(size) {
+    const boxSize = 800 / size
     const container = document.querySelector('.container')
     const div = document.createElement('div')
     div.classList.add('box')
@@ -16,16 +17,28 @@ function gridCreation(size) {
     }
 
     container.appendChild(columnFragment)
-    hoverEffect(size)
-    gridMargins()
-}
 
-function hoverEffect(size) {
-    let boxSize = 800 / size
+    let rainbow = false
+    const button = document.querySelector('#rainbowMode')
+    button.addEventListener('click', () => {
+        if (rainbow) rainbow = false
+        else rainbow = true
+    })
+
     const boxes = document.querySelectorAll('.box')
 
     boxes.forEach(box => box.style.cssText = `width:${boxSize}px; height:${boxSize}px;`)
-    boxes.forEach(box => box.addEventListener('mouseover', e => e.target.style.backgroundColor = 'purple'))
+    boxes.forEach(box => box.addEventListener('mouseover', e => {
+        if (rainbow) e.target.style.backgroundColor = randomRGBA()
+        else e.target.style.backgroundColor = 'purple'
+    }))
+
+    gridMargins()
+}
+
+function randomRGBA() {
+    let o = Math.round, r = Math.random, s = 255;
+    return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
 }
 
 function gridDelete() {
