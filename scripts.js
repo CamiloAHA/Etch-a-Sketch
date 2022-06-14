@@ -29,12 +29,12 @@ function gridCreation(size) {
 
     boxes.forEach(box => box.style.cssText = `width:${boxSize}px; height:${boxSize}px;`)
     boxes.forEach(box => box.addEventListener('mouseover', e => {
-        if (rainbow) e.target.style.backgroundColor = randomRGBA()
+        if (rainbow) e.target.style.backgroundColor = randomColor()
         else e.target.style.backgroundColor = 'purple'
     }))
 }
 
-function randomRGBA() {
+function randomColor() {
     let letters = '0123456789ABCDEF'
     let color = '#'
     for (let i = 0; i < 6; i++) {
@@ -63,6 +63,15 @@ function gridSizeChange() {
     })
 }
 
+function clearGrid() {
+    const button = document.querySelector('#clearGrid')
+    const boxes = document.querySelectorAll('.box')
+
+    button.addEventListener('click', () => {
+        boxes.forEach(box => box.style.backgroundColor = 'orange')
+    })
+}
+
 function gridMargins() {
     const button = document.querySelector('#gridMargins')
     const boxes = document.querySelectorAll('.box')
@@ -81,3 +90,4 @@ function gridMargins() {
 gridCreation(16)
 gridMargins()
 gridSizeChange()
+clearGrid()
